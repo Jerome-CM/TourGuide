@@ -52,7 +52,7 @@ public class RewardsService {
 <span class="nc" id="L52">	}</span>
 	
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
-<span class="nc bnc" id="L55" title="All 2 branches missed.">		return getDistance(attraction, location) &gt; attractionProximityRange ? false : true;</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">		return getDistance(attraction, location) &gt; attractionProximityRange ? false : true;</span>
 	}
 	
 	private boolean nearAttraction(VisitedLocation visitedLocation, Attraction attraction) {
@@ -64,17 +64,17 @@ public class RewardsService {
 	}
 	
 	public double getDistance(Location loc1, Location loc2) {
-<span class="nc" id="L67">        double lat1 = Math.toRadians(loc1.latitude);</span>
-<span class="nc" id="L68">        double lon1 = Math.toRadians(loc1.longitude);</span>
-<span class="nc" id="L69">        double lat2 = Math.toRadians(loc2.latitude);</span>
-<span class="nc" id="L70">        double lon2 = Math.toRadians(loc2.longitude);</span>
+<span class="fc" id="L67">        double lat1 = Math.toRadians(loc1.latitude);</span>
+<span class="fc" id="L68">        double lon1 = Math.toRadians(loc1.longitude);</span>
+<span class="fc" id="L69">        double lat2 = Math.toRadians(loc2.latitude);</span>
+<span class="fc" id="L70">        double lon2 = Math.toRadians(loc2.longitude);</span>
 
-<span class="nc" id="L72">        double angle = Math.acos(Math.sin(lat1) * Math.sin(lat2)</span>
-<span class="nc" id="L73">                               + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));</span>
+<span class="fc" id="L72">        double angle = Math.acos(Math.sin(lat1) * Math.sin(lat2)</span>
+<span class="fc" id="L73">                               + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));</span>
 
-<span class="nc" id="L75">        double nauticalMiles = 60 * Math.toDegrees(angle);</span>
-<span class="nc" id="L76">        double statuteMiles = STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;</span>
-<span class="nc" id="L77">        return statuteMiles;</span>
+<span class="fc" id="L75">        double nauticalMiles = 60 * Math.toDegrees(angle);</span>
+<span class="fc" id="L76">        double statuteMiles = STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;</span>
+<span class="fc" id="L77">        return statuteMiles;</span>
 	}
 
 }
