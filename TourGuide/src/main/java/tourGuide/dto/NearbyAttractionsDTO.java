@@ -1,12 +1,18 @@
 package tourGuide.dto;
 
+import lombok.Data;
+
 import java.util.HashMap;
+import java.util.List;
 
-public class nearbyAttractions {
+@Data
+public class NearbyAttractionsDTO {
 
-    String tourtistAttractionName;
-    HashMap<String, String> attractionLocation; //lat/long,, distance, reward
-    HashMap<String, String> userLocation; //lat/long,
+    private String tourtistAttractionName;
+    private HashMap<String, String> attractionLocation; //lat/long, distance, reward
+    private HashMap<String, String> userLocation;
+
+    private double distanceInMiles;
 
 // Les points de récompense d'attraction peuvent être collectés auprès de RewardsCentral
 
