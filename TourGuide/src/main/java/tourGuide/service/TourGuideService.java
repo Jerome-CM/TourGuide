@@ -3,6 +3,7 @@ package tourGuide.service;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -14,7 +15,9 @@ import gpsUtil.GpsUtil;
 import gpsUtil.location.Attraction;
 import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
+import rewardCentral.RewardCentral;
 import tourGuide.dto.NearbyAttractionsDTO;
+import tourGuide.dto.UserLocationListDTO;
 import tourGuide.helper.InternalTestHelper;
 import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
@@ -25,15 +28,22 @@ import tripPricer.TripPricer;
 @Service
 public class TourGuideService {
 	private Logger logger = LoggerFactory.getLogger(TourGuideService.class);
+
+	private final RewardCentral rewardCentral;
 	private final GpsUtil gpsUtil;
 	private final RewardsService rewardsService;
 	private final TripPricer tripPricer = new TripPricer();
 	public final Tracker tracker;
 	boolean testMode = true;
+
+	private final int nbNearestAttractions = 5;
+
+	ExecutorService executorService = Executors.newFixedThreadPool(50);
 	
-	public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService) {
+	public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService, RewardCentral rewardCentral) {
 		this.gpsUtil = gpsUtil;
 		this.rewardsService = rewardsService;
+		this.rewardCentral = rewardCentral;
 		
 		if(testMode) {
 			logger.info("TestMode enabled");
@@ -85,100 +95,44 @@ public class TourGuideService {
 		return visitedLocation;
 	}
 
-	/*public List<Attraction> getNearByAttractions(VisitedLocation visitedLocation) {
-		List<Attraction> nearbyAttractions = new ArrayList<>();
-		for(Attraction attraction : gpsUtil.getAttractions()) {
-			if(rewardsService.isWithinAttractionProximity(attraction, visitedLocation.location)) {
-				nearbyAttractions.add(attraction);
-			}
-		}
-		
-		return nearbyAttractions;
-	}*/
-
 	public List<NearbyAttractionsDTO> getNearByAttractions(VisitedLocation visitedLocation, String username) {
 
-		List<NearbyAttractionsDTO> returnList = new ArrayList<>();
+		List<Attraction> attractions = gpsUtil.getAttractions();
+		List<NearbyAttractionsDTO> nearestAttractions = new ArrayList<>();
 
-		// Load minimum 5 attraction
-		int loadFirstTime = 0;
-		// Load attraction nearby only
-		double distanceInstantMax = 0;
-		for(Attraction attraction : gpsUtil.getAttractions()) {
+		List<Future> futuresList = new ArrayList<>();
+		User user = getUser(username);
+		for (Attraction attraction : attractions) {
+			Callable changeUserNearest = () -> new NearbyAttractionsDTO(
+					attraction.attractionName,
+					new Location(attraction.longitude, attraction.latitude),
+					visitedLocation.location,
+					rewardsService.getDistance(attraction, visitedLocation.location),
+					rewardsService.getRewardPoints(attraction, user)
+			);
+			Future mapUserNearestAttractions = executorService.submit(changeUserNearest);
+			futuresList.add(mapUserNearestAttractions);
+		};
 
-			double distanceUserBetweenAttraction = rewardsService.getDistance(visitedLocation.location, new Location(attraction.latitude, attraction.longitude));
-
-			NearbyAttractionsDTO dto = new NearbyAttractionsDTO();
-			HashMap<String, String> infoAttraction = new HashMap<>();
-			HashMap<String, String> infoUser = new HashMap<>();
-			// if he have 5 loaded attractions,
-			// We add the next attraction only if it is closer than the attractions already added before
-			if(loadFirstTime > 5){
-				if(distanceInstantMax > distanceUserBetweenAttraction){
-
-					// User user = getUser(username);
-					dto.setTourtistAttractionName(attraction.attractionName);
-					infoAttraction.put("Latitude", String.valueOf(attraction.latitude));
-					infoAttraction.put("Longitude", String.valueOf(attraction.longitude));
-					// infoAttraction.put("Reward",); // TODO ADD REWARD
-					dto.setAttractionLocation(infoAttraction);
-					infoUser.put("Latitude", String.valueOf(visitedLocation.location.latitude));
-					infoUser.put("Longitude", String.valueOf(visitedLocation.location.longitude));
-					dto.setUserLocation(infoUser);
-					dto.setDistanceInMiles(distanceUserBetweenAttraction);
-					distanceInstantMax = distanceUserBetweenAttraction;
-					returnList.add(dto);
-					logger.info("--- distanceInstantMax in the if 5 : {} ---", distanceInstantMax);
-				}
-			// load 5 attractions minimum
-			} else {
-				// User user = getUser(username);
-				dto.setTourtistAttractionName(attraction.attractionName);
-				infoAttraction.put("Latitude", String.valueOf(attraction.latitude));
-				infoAttraction.put("Longitude", String.valueOf(attraction.longitude));
-				// infoAttraction.put("Reward",); // TODO ADD REWARD
-				dto.setAttractionLocation(infoAttraction);
-				infoUser.put("Latitude", String.valueOf(visitedLocation.location.latitude));
-				infoUser.put("Longitude", String.valueOf(visitedLocation.location.longitude));
-				dto.setUserLocation(infoUser);
-				dto.setDistanceInMiles(distanceUserBetweenAttraction);
-				if(distanceInstantMax == 0){
-					distanceInstantMax = distanceUserBetweenAttraction;
-				} else if (distanceInstantMax > distanceUserBetweenAttraction){
-					distanceInstantMax = distanceUserBetweenAttraction;
-				}
-				logger.info("--- distanceInstantMax in the else : {} ---", distanceInstantMax);
-				returnList.add(dto);
+		for (Future future: futuresList) {
+			NearbyAttractionsDTO at = null;
+			try {
+				at = (NearbyAttractionsDTO) future.get();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
 			}
-
-			loadFirstTime++;
-
+			nearestAttractions.add(at);
 		}
 
-		return sortProximityAttraction(returnList);
+		List<NearbyAttractionsDTO> listAttractionsSorted = nearestAttractions
+				.stream()
+				.sorted(Comparator.comparing(NearbyAttractionsDTO::getDistanceInMiles))
+				.limit(nbNearestAttractions)
+				.collect(Collectors.toList());
 
-	}
-
-	private List<NearbyAttractionsDTO> sortProximityAttraction(List<NearbyAttractionsDTO> list){
-
-		List<NearbyAttractionsDTO> listSorted = new ArrayList<>();
-		List<Double> getMilesListing = new ArrayList<>();
-
-		for(int x = 0; x < list.size(); x++){
-
-			getMilesListing.add(list.get(x).getDistanceInMiles());
-		}
-
-		Collections.sort(getMilesListing);
-
-		for(int i = 0; i < 5; i++){
-			for (NearbyAttractionsDTO attraction : list) {
-				if(getMilesListing.get(i) == attraction.getDistanceInMiles())
-					listSorted.add(attraction);
-			}
-
-		}
-		return listSorted;
+		return listAttractionsSorted;
 	}
 	
 	private void addShutDownHook() {
@@ -189,27 +143,17 @@ public class TourGuideService {
 		    }); 
 	}
 
-	public List<Map<String, Map<String, Double>>> getAllCurrentLocations(){
-		List<Map<String, Map<String, Double>>> returnList = new ArrayList<>();
+	public String getAllCurrentLocations(){
+		List<User> userList = getAllUsers();
+		UserLocationListDTO userLocationListDTO = new UserLocationListDTO();
 
-		for(int i = 0; i < InternalTestHelper.getInternalUserNumber(); i++){
+		userList.forEach(user ->
+		{
+			userLocationListDTO.add(user.getUserId().toString(), user.getLastVisitedLocation().location);
+		});
 
-			User user = getUser("internalUser"+i);
-			Map<String, Double> userPosition = new HashMap<>();
-			Map<String, Map<String, Double>> formatResponse = new HashMap<>();
+		return userLocationListDTO.toString();
 
-			String id = String.valueOf(user.getUserId());
-
-			userPosition.put("longitude", user.getLastVisitedLocation().location.longitude);
-			userPosition.put("latitude", user.getLastVisitedLocation().location.latitude);
-
-			formatResponse.put(id, userPosition);
-
-			returnList.add(formatResponse);
-
-		}
-
-		return returnList;
 	}
 	
 	/**********************************************************************************
