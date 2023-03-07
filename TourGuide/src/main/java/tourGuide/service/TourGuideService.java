@@ -162,40 +162,22 @@ public class TourGuideService {
 	private List<NearbyAttractionsDTO> sortProximityAttraction(List<NearbyAttractionsDTO> list){
 
 		List<NearbyAttractionsDTO> listSorted = new ArrayList<>();
+		List<Double> getMilesListing = new ArrayList<>();
 
 		for(int x = 0; x < list.size(); x++){
-			logger.info("--- in first loop x = {} ---", x);
-			NearbyAttractionsDTO getElement = list.get(x); // ELEMENT 2 loaded
-			logger.info("--- element loaded : {} ---", getElement);
-			if(x == 0){
-				logger.info("--- if first entry : yes, first element load ---");
-				listSorted.add(getElement);
-			} else {
-				int addToIndex = 0;
-				for(int i = 0; i < listSorted.size(); i++){
-					logger.info("--- in second loop x = {} , i = {} ---", x, i);
-					logger.info("--- getElement.getDistanceInMiles() = {} ---", getElement.getDistanceInMiles());
-					logger.info("--- listSorted.get(i).getDistanceInMiles() = {} ---", listSorted.get(i).getDistanceInMiles());
-					logger.info("if element is best proximity ? {}", getElement.getDistanceInMiles() < listSorted.get(i).getDistanceInMiles());
-					if(getElement.getDistanceInMiles() < listSorted.get(i).getDistanceInMiles()){
-						addToIndex = 0;
-						for(int z = 0; z < listSorted.size(); z++){
-							if(getElement.getDistanceInMiles() < listSorted.get(z).getDistanceInMiles()){
-								addToIndex++;
-							}
-						}
-						logger.info("Element {} at the place {}", getElement, addToIndex);
-						listSorted.add(addToIndex, getElement);
-					} else {
-						listSorted.add(listSorted.size(), getElement);
-					}
 
-				}
+			getMilesListing.add(list.get(x).getDistanceInMiles());
+		}
 
+		Collections.sort(getMilesListing);
+
+		for(int i = 0; i < 5; i++){
+			for (NearbyAttractionsDTO attraction : list) {
+				if(getMilesListing.get(i) == attraction.getDistanceInMiles())
+					listSorted.add(attraction);
 			}
 
 		}
-
 		return listSorted;
 	}
 	
