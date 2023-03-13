@@ -126,6 +126,8 @@ public class TourGuideService {
 			nearestAttractions.add(at);
 		}
 
+		executorService.shutdown();
+
 		List<NearbyAttractionsDTO> listAttractionsSorted = nearestAttractions
 				.stream()
 				.sorted(Comparator.comparing(NearbyAttractionsDTO::getDistanceInMiles))
