@@ -4,8 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -21,6 +23,12 @@ import tourGuide.user.User;
 import tripPricer.Provider;
 
 public class TestTourGuideService {
+
+	@Before
+	public void setUp() throws Exception {
+
+		Locale.setDefault(Locale.US);
+	}
 
 	@Test
 	public void getUserLocation() {
@@ -108,13 +116,14 @@ public class TestTourGuideService {
 		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 		VisitedLocation visitedLocation = tourGuideService.trackUserLocation(user);
 
-		List<NearbyAttractionsDTO> attractions = tourGuideService.getNearByAttractions(visitedLocation, "internalUser1");
+		List<NearbyAttractionsDTO> attractions = tourGuideService.getNearByAttractions(visitedLocation, user);
 		
 		tourGuideService.tracker.stopTracking();
 		
 		assertEquals(5, attractions.size());
 	}
-	
+
+	@Test
 	public void getTripDeals() {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
