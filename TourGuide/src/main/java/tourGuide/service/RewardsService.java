@@ -1,7 +1,9 @@
 package tourGuide.service;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import gpsUtil.GpsUtil;
@@ -13,6 +15,7 @@ import tourGuide.user.User;
 import tourGuide.user.UserReward;
 
 @Service
+@Slf4j
 public class RewardsService {
     private static final double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
 
@@ -36,7 +39,7 @@ public class RewardsService {
 		proximityBuffer = defaultProximityBuffer;
 	}
 	
-	public void calculateRewards(User user) {
+	/*public void calculateRewards(User user) {
 		List<VisitedLocation> userLocations = user.getVisitedLocations();
 		List<Attraction> attractions = gpsUtil.getAttractions();
 		
@@ -44,6 +47,26 @@ public class RewardsService {
 			for(Attraction attraction : attractions) {
 				if(user.getUserRewards().stream().filter(r -> r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {
 					if(nearAttraction(visitedLocation, attraction)) {
+						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
+					}
+				}
+			}
+		}
+	}*/ //  calculateRewards origin
+
+	public void calculateRewards(User user) {
+		System.out.println("-- calculateRewards : user follow : " + user.getVisitedLocations());
+		List<VisitedLocation> userLocations = user.getVisitedLocations();
+		List<Attraction> attractions = gpsUtil.getAttractions();
+		System.out.println("-- calculateRewards : usersLocationsList : "+ userLocations);
+		System.out.println("-- calculateRewards : attractionsList : "+ attractions);
+		for(VisitedLocation visitedLocation : userLocations) {
+			for(Attraction attraction : attractions) {
+				//On compte combien de fois une attraction est présente dans les recompenses reçues par le user
+				if(user.getUserRewards().stream().filter(r -> r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {
+					System.out.println("Attraction is unknown");
+					if(nearAttraction(visitedLocation, attraction)) {
+						System.out.println(attraction.attractionName + " is near and added");
 						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
 					}
 				}
