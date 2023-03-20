@@ -85,23 +85,24 @@ public class TourGuideService {
 		List<Provider> providers = tripPricer.getPrice(tripPricerApiKey, user.getUserId(), user.getUserPreferences().getNumberOfAdults(), 
 				user.getUserPreferences().getNumberOfChildren(), user.getUserPreferences().getTripDuration(), cumulatativeRewardPoints);
 		user.setTripDeals(providers);
+		System.out.println("providers" + providers);
 		return providers;
 	}
 	
 	public VisitedLocation trackUserLocation(User user) {
 		VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
 		user.addToVisitedLocations(visitedLocation);
+		// user join correctly
 		rewardsService.calculateRewards(user);
 		return visitedLocation;
 	}
 
-	public List<NearbyAttractionsDTO> getNearByAttractions(VisitedLocation visitedLocation, String username) {
+	public List<NearbyAttractionsDTO> getNearByAttractions(VisitedLocation visitedLocation, User user) {
 
 		List<Attraction> attractions = gpsUtil.getAttractions();
 		List<NearbyAttractionsDTO> nearestAttractions = new ArrayList<>();
 
 		List<Future> futuresList = new ArrayList<>();
-		User user = getUser(username);
 		for (Attraction attraction : attractions) {
 			Callable changeUserNearest = () -> new NearbyAttractionsDTO(
 					attraction.attractionName,
