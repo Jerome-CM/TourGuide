@@ -36,7 +36,7 @@ public class TourGuideService {
 	public final Tracker tracker;
 	boolean testMode = true;
 
-	private final int nbNearestAttractions = 5;
+	private final int  NB_NEAREST_ATTRACTIONS = 5;
 
 	ExecutorService executorService = Executors.newFixedThreadPool(50);
 	
@@ -131,7 +131,7 @@ public class TourGuideService {
 		List<NearbyAttractionsDTO> listAttractionsSorted = nearestAttractions
 				.stream()
 				.sorted(Comparator.comparing(NearbyAttractionsDTO::getDistanceInMiles))
-				.limit(nbNearestAttractions)
+				.limit(NB_NEAREST_ATTRACTIONS)
 				.collect(Collectors.toList());
 
 		return listAttractionsSorted;

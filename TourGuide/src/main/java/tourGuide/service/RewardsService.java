@@ -2,6 +2,7 @@ package tourGuide.service;
 
 import java.sql.SQLOutput;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -55,23 +56,31 @@ public class RewardsService {
 	}*/ //  calculateRewards origin
 
 	public void calculateRewards(User user) {
-		System.out.println("-- calculateRewards : user follow : " + user.getVisitedLocations());
-		List<VisitedLocation> userLocations = user.getVisitedLocations();
-		List<Attraction> attractions = gpsUtil.getAttractions();
-		System.out.println("-- calculateRewards : usersLocationsList : "+ userLocations);
-		System.out.println("-- calculateRewards : attractionsList : "+ attractions);
+
+		//System.out.println("-- calculateRewards : user follow : " + user.getVisitedLocations());
+		CopyOnWriteArrayList<VisitedLocation> userLocations = new CopyOnWriteArrayList<>();
+		userLocations.addAll(user.getVisitedLocations());
+		CopyOnWriteArrayList<Attraction> attractions = new CopyOnWriteArrayList<>();
+		attractions.addAll(gpsUtil.getAttractions());
+
 		for(VisitedLocation visitedLocation : userLocations) {
+			System.out.println("1) New location");
 			for(Attraction attraction : attractions) {
-				//On compte combien de fois une attraction est présente dans les recompenses reçues par le user
+
 				if(user.getUserRewards().stream().filter(r -> r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {
-					System.out.println("Attraction is unknown");
+					System.out.println("2) Attraction name is good");
 					if(nearAttraction(visitedLocation, attraction)) {
-						System.out.println(attraction.attractionName + " is near and added");
+						System.out.println("2) near validate");
+						int point = getRewardPoints(attraction, user);
+						System.out.println("Debugg : visitedLocation : " + visitedLocation.location.longitude + " attraction name : " + attraction.attractionName + " for getReward attractionid : " + attraction.attractionId + " userID for getReward : " + user.getUserId() + " points : "+ point);
 						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
+						System.out.println("Reward Added");
 					}
 				}
+
 			}
 		}
+
 	}
 	
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
@@ -79,10 +88,13 @@ public class RewardsService {
 	}
 	
 	private boolean nearAttraction(VisitedLocation visitedLocation, Attraction attraction) {
+		System.out.println("getDistance : " + getDistance(attraction, visitedLocation.location));
+		System.out.println("ProximityBuffer :" + proximityBuffer);
+
 		return getDistance(attraction, visitedLocation.location) > proximityBuffer ? false : true;
 	}
 	
-	public int getRewardPoints(Attraction attraction, User user) {
+	public synchronized int getRewardPoints(Attraction attraction, User user) {
 		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
 	}
 	

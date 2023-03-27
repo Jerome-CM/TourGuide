@@ -68,9 +68,12 @@ public class User {
 	public void clearVisitedLocations() {
 		visitedLocations.clear();
 	}
-	
+
+
 	public void addUserReward(UserReward userReward) {
-		if(userRewards.stream().filter(r -> !r.attraction.attractionName.equals(userReward.attraction)).count() == 0) {
+		System.out.println("in addUserReward");
+		if(userRewards.stream().filter(r -> r.attraction.attractionName.equals(userReward.attraction.attractionName)).count() == 0) {
+			System.out.println("in if, add reward normaly");
 			userRewards.add(userReward);
 		}
 	}
