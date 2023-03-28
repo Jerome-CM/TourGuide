@@ -62,41 +62,44 @@ public class User {
 <span class="fc" id="L62">	}</span>
 	
 	public List&lt;VisitedLocation&gt; getVisitedLocations() {
-<span class="nc" id="L65">		return visitedLocations;</span>
+<span class="fc" id="L65">		return visitedLocations;</span>
 	}
 	
 	public void clearVisitedLocations() {
 <span class="nc" id="L69">		visitedLocations.clear();</span>
 <span class="nc" id="L70">	}</span>
-	
+
+
 	public void addUserReward(UserReward userReward) {
-<span class="nc bnc" id="L73" title="All 4 branches missed.">		if(userRewards.stream().filter(r -&gt; !r.attraction.attractionName.equals(userReward.attraction)).count() == 0) {</span>
-<span class="nc" id="L74">			userRewards.add(userReward);</span>
+<span class="fc" id="L74">		System.out.println(&quot;in addUserReward&quot;);</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">		if(userRewards.stream().filter(r -&gt; r.attraction.attractionName.equals(userReward.attraction.attractionName)).count() == 0) {</span>
+<span class="fc" id="L76">			System.out.println(&quot;in if, add reward normaly&quot;);</span>
+<span class="fc" id="L77">			userRewards.add(userReward);</span>
 		}
-<span class="nc" id="L76">	}</span>
+<span class="fc" id="L79">	}</span>
 	
 	public List&lt;UserReward&gt; getUserRewards() {
-<span class="nc" id="L79">		return userRewards;</span>
+<span class="fc" id="L82">		return userRewards;</span>
 	}
 	
 	public UserPreferences getUserPreferences() {
-<span class="nc" id="L83">		return userPreferences;</span>
+<span class="nc" id="L86">		return userPreferences;</span>
 	}
 	
 	public void setUserPreferences(UserPreferences userPreferences) {
-<span class="nc" id="L87">		this.userPreferences = userPreferences;</span>
-<span class="nc" id="L88">	}</span>
+<span class="nc" id="L90">		this.userPreferences = userPreferences;</span>
+<span class="nc" id="L91">	}</span>
 
 	public VisitedLocation getLastVisitedLocation() {
-<span class="nc" id="L91">		return visitedLocations.get(visitedLocations.size() - 1);</span>
+<span class="nc" id="L94">		return visitedLocations.get(visitedLocations.size() - 1);</span>
 	}
 	
 	public void setTripDeals(List&lt;Provider&gt; tripDeals) {
-<span class="nc" id="L95">		this.tripDeals = tripDeals;</span>
-<span class="nc" id="L96">	}</span>
+<span class="nc" id="L98">		this.tripDeals = tripDeals;</span>
+<span class="nc" id="L99">	}</span>
 	
 	public List&lt;Provider&gt; getTripDeals() {
-<span class="nc" id="L99">		return tripDeals;</span>
+<span class="nc" id="L102">		return tripDeals;</span>
 	}
 
 }

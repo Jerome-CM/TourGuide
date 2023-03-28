@@ -2,13 +2,8 @@ package tourGuide.service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
+import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -20,6 +15,9 @@ import gpsUtil.GpsUtil;
 import gpsUtil.location.Attraction;
 import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
+import rewardCentral.RewardCentral;
+import tourGuide.dto.NearbyAttractionsDTO;
+import tourGuide.dto.UserLocationListDTO;
 import tourGuide.helper.InternalTestHelper;
 import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
@@ -30,15 +28,22 @@ import tripPricer.TripPricer;
 @Service
 public class TourGuideService {
 	private Logger logger = LoggerFactory.getLogger(TourGuideService.class);
+
+	private final RewardCentral rewardCentral;
 	private final GpsUtil gpsUtil;
 	private final RewardsService rewardsService;
 	private final TripPricer tripPricer = new TripPricer();
 	public final Tracker tracker;
 	boolean testMode = true;
+
+	private final int  NB_NEAREST_ATTRACTIONS = 5;
+
+	ExecutorService executorService = Executors.newFixedThreadPool(50);
 	
-	public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService) {
+	public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService, RewardCentral rewardCentral) {
 		this.gpsUtil = gpsUtil;
 		this.rewardsService = rewardsService;
+		this.rewardCentral = rewardCentral;
 		
 		if(testMode) {
 			logger.info("TestMode enabled");
@@ -90,15 +95,45 @@ public class TourGuideService {
 		return visitedLocation;
 	}
 
-	public List<Attraction> getNearByAttractions(VisitedLocation visitedLocation) {
-		List<Attraction> nearbyAttractions = new ArrayList<>();
-		for(Attraction attraction : gpsUtil.getAttractions()) {
-			if(rewardsService.isWithinAttractionProximity(attraction, visitedLocation.location)) {
-				nearbyAttractions.add(attraction);
+	public List<NearbyAttractionsDTO> getNearByAttractions(VisitedLocation visitedLocation, User user) {
+
+		List<Attraction> attractions = gpsUtil.getAttractions();
+		List<NearbyAttractionsDTO> nearestAttractions = new ArrayList<>();
+
+		List<Future> futuresList = new ArrayList<>();
+		for (Attraction attraction : attractions) {
+			Callable changeUserNearest = () -> new NearbyAttractionsDTO(
+					attraction.attractionName,
+					new Location(attraction.longitude, attraction.latitude),
+					visitedLocation.location,
+					rewardsService.getDistance(attraction, visitedLocation.location),
+					rewardsService.getRewardPoints(attraction, user)
+			);
+			Future mapUserNearestAttractions = executorService.submit(changeUserNearest);
+			futuresList.add(mapUserNearestAttractions);
+		};
+
+		for (Future future: futuresList) {
+			NearbyAttractionsDTO at = null;
+			try {
+				at = (NearbyAttractionsDTO) future.get();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
 			}
+			nearestAttractions.add(at);
 		}
-		
-		return nearbyAttractions;
+
+		executorService.shutdown();
+
+		List<NearbyAttractionsDTO> listAttractionsSorted = nearestAttractions
+				.stream()
+				.sorted(Comparator.comparing(NearbyAttractionsDTO::getDistanceInMiles))
+				.limit(NB_NEAREST_ATTRACTIONS)
+				.collect(Collectors.toList());
+
+		return listAttractionsSorted;
 	}
 	
 	private void addShutDownHook() {
@@ -107,6 +142,19 @@ public class TourGuideService {
 		        tracker.stopTracking();
 		      } 
 		    }); 
+	}
+
+	public String getAllCurrentLocations(){
+		List<User> userList = getAllUsers();
+		UserLocationListDTO userLocationListDTO = new UserLocationListDTO();
+
+		userList.forEach(user ->
+		{
+			userLocationListDTO.add(user.getUserId().toString(), user.getLastVisitedLocation().location);
+		});
+
+		return userLocationListDTO.toString();
+
 	}
 	
 	/**********************************************************************************
