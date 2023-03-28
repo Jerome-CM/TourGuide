@@ -54,30 +54,6 @@ public class TestPerformance {
 
 	ExecutorService executorService = Executors.newFixedThreadPool(100);
 
-/*	@Test
-	public void highVolumeTrackLocation() {
-		GpsUtil gpsUtil = new GpsUtil();
-		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
-		// Users should be incremented up to 100,000, and test finishes within 15 minutes
-		RewardCentral rewardCentral = new RewardCentral();
-		InternalTestHelper.setInternalUserNumber(100);
-		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService, rewardCentral);
-
-		List<User> allUsers = new ArrayList<>();
-		allUsers = tourGuideService.getAllUsers();
-		
-	    StopWatch stopWatch = new StopWatch();
-		stopWatch.start();
-		for(User user : allUsers) {
-			tourGuideService.trackUserLocation(user);
-		}
-		stopWatch.stop();
-		tourGuideService.tracker.stopTracking();
-
-		System.out.println("highVolumeTrackLocation: Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds."); 
-		assertTrue(TimeUnit.MINUTES.toSeconds(15) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
-	}*/ // Original Test
-
 	@Test
 	public void highVolumeTrackLocation() {
 		GpsUtil gpsUtil = new GpsUtil();
@@ -120,37 +96,37 @@ public class TestPerformance {
 		assertTrue(TimeUnit.MINUTES.toSeconds(15) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
 	}
 
-	@Ignore
 	@Test
 	public void highVolumeGetRewards() {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 
 		// Users should be incremented up to 100,000, and test finishes within 20 minutes
-		InternalTestHelper.setInternalUserNumber(50000);
-		//rewardsService.setProximityBuffer(Integer.MAX_VALUE);
+		InternalTestHelper.setInternalUserNumber(10);
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 		RewardCentral rewardCentral = new RewardCentral();
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService, rewardCentral);
-
 		Attraction attraction = gpsUtil.getAttractions().get(0);
 		CopyOnWriteArrayList<User> allUsers = new CopyOnWriteArrayList<>();
 		allUsers.addAll(tourGuideService.getAllUsers());
 
-		allUsers.forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date())));
-		System.out.println("Verif Location " + allUsers.get(0).getVisitedLocations().get(0).location.longitude);
-		ExecutorService executorService= Executors.newFixedThreadPool(10);
+		try {
+			allUsers.forEach(u -> {
+				Runnable runnable = () -> {
+					u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date()));
+					rewardsService.calculateRewards(u);
+					assertTrue(u.getUserRewards().size() > 0);
+				};
+				executorService.execute(runnable);
+			});
 
-		// Thread Sleep, reward not added
-		allUsers.forEach(u -> executorService.submit(new Thread(()->rewardsService.calculateRewards(u))));
-		System.out.println("Verif rewards " + allUsers.get(0).getUserRewards().size());
+			executorService.shutdown();
+			executorService.awaitTermination(20, TimeUnit.MINUTES);
 
-		executorService.shutdown();
-
-		/*for(User user : allUsers) {
-			assertTrue(user.getUserRewards().size() > 0);
-		}*/
+		} catch (InterruptedException e){
+			e.printStackTrace();
+		}
 
 		stopWatch.stop();
 		tourGuideService.tracker.stopTracking();

@@ -39,45 +39,20 @@ public class RewardsService {
 	public void setDefaultProximityBuffer() {
 		proximityBuffer = defaultProximityBuffer;
 	}
-	
-	/*public void calculateRewards(User user) {
-		List<VisitedLocation> userLocations = user.getVisitedLocations();
-		List<Attraction> attractions = gpsUtil.getAttractions();
-		
-		for(VisitedLocation visitedLocation : userLocations) {
-			for(Attraction attraction : attractions) {
-				if(user.getUserRewards().stream().filter(r -> r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {
-					if(nearAttraction(visitedLocation, attraction)) {
-						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
-					}
-				}
-			}
-		}
-	}*/ //  calculateRewards origin
 
 	public void calculateRewards(User user) {
-
-		//System.out.println("-- calculateRewards : user follow : " + user.getVisitedLocations());
 		CopyOnWriteArrayList<VisitedLocation> userLocations = new CopyOnWriteArrayList<>();
 		userLocations.addAll(user.getVisitedLocations());
 		CopyOnWriteArrayList<Attraction> attractions = new CopyOnWriteArrayList<>();
 		attractions.addAll(gpsUtil.getAttractions());
 
 		for(VisitedLocation visitedLocation : userLocations) {
-			System.out.println("1) New location");
 			for(Attraction attraction : attractions) {
-
 				if(user.getUserRewards().stream().filter(r -> r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {
-					System.out.println("2) Attraction name is good");
 					if(nearAttraction(visitedLocation, attraction)) {
-						System.out.println("2) near validate");
-						int point = getRewardPoints(attraction, user);
-						System.out.println("Debugg : visitedLocation : " + visitedLocation.location.longitude + " attraction name : " + attraction.attractionName + " for getReward attractionid : " + attraction.attractionId + " userID for getReward : " + user.getUserId() + " points : "+ point);
 						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
-						System.out.println("Reward Added");
 					}
 				}
-
 			}
 		}
 
@@ -88,13 +63,10 @@ public class RewardsService {
 	}
 	
 	private boolean nearAttraction(VisitedLocation visitedLocation, Attraction attraction) {
-		System.out.println("getDistance : " + getDistance(attraction, visitedLocation.location));
-		System.out.println("ProximityBuffer :" + proximityBuffer);
-
 		return getDistance(attraction, visitedLocation.location) > proximityBuffer ? false : true;
 	}
 	
-	public synchronized int getRewardPoints(Attraction attraction, User user) {
+	public int getRewardPoints(Attraction attraction, User user) {
 		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
 	}
 	
