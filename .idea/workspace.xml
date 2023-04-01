@@ -5,8 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="444085fb-3127-49f4-91c6-e65cfab89f59" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileContent/annotation-processors.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/vcsWorkingDirs/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/tourGuide/TestPerformance.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/tourGuide/TestPerformance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacoco/test.exec" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacoco/test.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/NearbyAttractionsDTO.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/NearbyAttractionsDTO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/NearbyAttractionsDTO.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/NearbyAttractionsDTO.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/RewardsService.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/RewardsService.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/RewardsService.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/RewardsService.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/TourGuideService.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/TourGuideService.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/TourGuideService.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/TourGuideService.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/User.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/User.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/User.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/User.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/UserPreferences.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/UserPreferences.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/UserPreferences.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/UserPreferences.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/jacocoTestReport.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/jacocoTestReport.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/tourGuide.TestPerformance.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/tourGuide.TestPerformance.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/tourGuide.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/tourGuide.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-tourGuide.TestPerformance.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-tourGuide.TestPerformance.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tourGuide/TestPerformance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tourGuide/TestPerformance.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +259,7 @@
       <updated>1678357745654</updated>
       <workItem from="1678357747974" duration="26602000" />
       <workItem from="1678975709979" duration="65773000" />
-      <workItem from="1680169412843" duration="794000" />
+      <workItem from="1680169412843" duration="14571000" />
     </task>
     <servers />
   </component>

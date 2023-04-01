@@ -1,0 +1,32 @@
+
+image : openjdk:8-alpine
+
+stages:          # List of stages for jobs, and their order of execution
+- build
+- test
+- package
+- deploy
+
+
+build-job:
+    stage: build
+    script: ./gradlew --build-cache assemble
+    cache:
+        key: "$CI_COMMIT_REF_NAME"
+        policy: push
+        paths:
+            - build
+            - .gradle
+
+test-job:
+    stage: test
+    script: ./gradlew test
+
+package-job:
+    stage: package
+    script: ./gradlew bootJar
+
+
+package_job:
+  stage: deploy
+  script: ./gradlew publish

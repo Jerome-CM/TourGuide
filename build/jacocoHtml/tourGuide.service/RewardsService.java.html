@@ -33,8 +33,8 @@ public class RewardsService {
 <span class="fc" id="L33">	}</span>
 	
 	public void setProximityBuffer(int proximityBuffer) {
-<span class="nc" id="L36">		this.proximityBuffer = proximityBuffer;</span>
-<span class="nc" id="L37">	}</span>
+<span class="fc" id="L36">		this.proximityBuffer = proximityBuffer;</span>
+<span class="fc" id="L37">	}</span>
 	
 	public void setDefaultProximityBuffer() {
 <span class="nc" id="L40">		proximityBuffer = defaultProximityBuffer;</span>
@@ -59,7 +59,7 @@ public class RewardsService {
 <span class="fc" id="L59">	}</span>
 	
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
-<span class="nc bnc" id="L62" title="All 2 branches missed.">		return getDistance(attraction, location) &gt; attractionProximityRange ? false : true;</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">		return getDistance(attraction, location) &gt; attractionProximityRange ? false : true;</span>
 	}
 	
 	private boolean nearAttraction(VisitedLocation visitedLocation, Attraction attraction) {
