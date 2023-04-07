@@ -1,13 +1,9 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
-        classpath "com.gradle.publish:plugin-publish-plugin:1.1.0"
     }
 }
 
@@ -17,7 +13,6 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: "jacoco"
-apply plugin: "maven-publish"
 
 
 bootJar {
@@ -30,37 +25,6 @@ repositories {
     flatDir {
         dirs 'libs'
     }
-}
-
-task copyJar(type: Copy) {
-    from jar.archivePath
-    into '/builds/Jerome_CM/tourGuide/build/libs/'
-}
-
-publishing {
-    repositories {
-        maven {
-            url 'https://gitlab.example.com/api/v4/projects/44763232/packages/maven'
-            credentials {
-                username 'Jerome_CM'
-                password 'Gab-htdocs41-com'
-            }
-        }
-    }
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId = 'com.tripmaster'
-            artifactId = 'TourGuide'
-            version = '1.0.0'
-
-            artifact file('/build/libs/tourGuide-1.0.0.jar')
-        }
-    }
-
-    publish.dependsOn(copyJar)
 }
 
 sourceCompatibility = 1.8
