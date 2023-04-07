@@ -67,6 +67,7 @@ public class TestPerformance {
 
 
 		for(User user : allUsers) {
+			// Load data in a thread and get a result on a future
 			Callable signatureLocation = () -> tourGuideService.trackUserLocation(user);
 			Future getLocationInFuture = executorService.submit(signatureLocation);
 			futureList.add(getLocationInFuture);
@@ -76,6 +77,7 @@ public class TestPerformance {
 		for(Future future : futureList){
 			VisitedLocation visit = null;
 			try {
+				// Get result in a visitedLocation object
 				visit = (VisitedLocation) future.get();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -110,11 +112,13 @@ public class TestPerformance {
 
 		try {
 			allUsers.forEach(u -> {
+				// Load data in a thread
 				Runnable runnable = () -> {
 					u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date()));
 					rewardsService.calculateRewards(u);
 					assertTrue(u.getUserRewards().size() > 0);
 				};
+				// Execute threads pool
 				executorService.execute(runnable);
 			});
 

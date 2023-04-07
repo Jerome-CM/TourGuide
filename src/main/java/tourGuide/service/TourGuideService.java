@@ -100,6 +100,7 @@ public class TourGuideService {
 
 		List<Future> futuresList = new ArrayList<>();
 		for (Attraction attraction : attractions) {
+			// Load data in a thread
 			Callable changeUserNearest = () -> new NearbyAttractionsDTO(
 					attraction.attractionName,
 					new Location(attraction.longitude, attraction.latitude),
@@ -107,6 +108,8 @@ public class TourGuideService {
 					rewardsService.getDistance(attraction, visitedLocation.location),
 					rewardsService.getRewardPoints(attraction, user)
 			);
+
+			// Execute threads pool
 			Future mapUserNearestAttractions = executorService.submit(changeUserNearest);
 			futuresList.add(mapUserNearestAttractions);
 		};
@@ -114,6 +117,7 @@ public class TourGuideService {
 		for (Future future: futuresList) {
 			NearbyAttractionsDTO at = null;
 			try {
+				// Get result in a DTO
 				at = (NearbyAttractionsDTO) future.get();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -125,6 +129,7 @@ public class TourGuideService {
 
 		executorService.shutdown();
 
+		// Sort list and limit to 5 attractions for the view
 		List<NearbyAttractionsDTO> listAttractionsSorted = nearestAttractions
 				.stream()
 				.sorted(Comparator.comparing(NearbyAttractionsDTO::getDistanceInMiles))
@@ -151,6 +156,7 @@ public class TourGuideService {
 			userLocationListDTO.add(user.getUserId().toString(), user.getLastVisitedLocation().location);
 		});
 
+		// Display uuid : {longitude, latitude}
 		return userLocationListDTO.toString();
 
 	}
