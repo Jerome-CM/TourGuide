@@ -5,62 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="444085fb-3127-49f4-91c6-e65cfab89f59" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileContent/annotation-processors.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileContent/fileContent.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/dependencies-accessors/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/vcsWorkingDirs/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8.1/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8.1/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/test/tourGuide/TestPerformance.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/tourGuide/TestPerformance.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/jacoco/test.exec" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacoco/test.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/jacocoHtml/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/jacoco-sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/NearbyAttractionsDTO.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/NearbyAttractionsDTO.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/NearbyAttractionsDTO.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/NearbyAttractionsDTO.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.dto/index.source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/RewardsService.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/RewardsService.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/RewardsService.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/RewardsService.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/TourGuideService.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/TourGuideService.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/TourGuideService.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/TourGuideService.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.service/index.source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/User.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/User.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/User.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/User.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/UserPreferences.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/UserPreferences.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/UserPreferences.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/UserPreferences.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacocoHtml/tourGuide.user/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/tourGuide-1.0.0.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/jacocoTestReport.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/jacocoTestReport.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/tourGuide.TestPerformance.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/tourGuide.TestPerformance.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/tourGuide.TestRewardsService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/tourGuide.TestTourGuideService.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/tourGuide.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/tourGuide.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-tourGuide.TestPerformance.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-tourGuide.TestPerformance.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-tourGuide.TestRewardsService.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-tourGuide.TestTourGuideService.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tourGuide/dto/NearbyAttractionsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tourGuide/dto/NearbyAttractionsDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tourGuide/dto/UserLocationListDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tourGuide/dto/UserLocationListDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tourGuide/service/RewardsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tourGuide/service/RewardsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tourGuide/service/TourGuideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tourGuide/service/TourGuideService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tourGuide/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tourGuide/user/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tourGuide/TestPerformance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tourGuide/TestPerformance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tourGuide/TestRewardsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tourGuide/TestRewardsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tourGuide/TestTourGuideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tourGuide/TestTourGuideService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -96,29 +80,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/jeromebouteveille/git/JavaPathENProject8",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.71149427",
-    "spring.configuration.checksum": "5c2898651948cfe455a5a5c9c590289b",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jeromebouteveille/git/JavaPathENProject8&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.71149427&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;5c2898651948cfe455a5a5c9c590289b&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Spring Boot.Application">
+}</component>
+  <component name="RunManager" selected="Gradle.Tests in 'TourGuide.test'">
     <configuration name="TestPerformance.highVolumeGetRewards" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -142,6 +127,29 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="TestPerformance.highVolumeTrackLocation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;tourGuide.TestPerformance.highVolumeTrackLocation&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="TestRewardsService" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -156,29 +164,6 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;tourGuide.TestRewardsService&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="TestRewardsService.nearAllAttractions" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;tourGuide.TestRewardsService.nearAllAttractions&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -241,11 +226,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Tests in 'TourGuide.test'" />
+        <item itemvalue="Gradle.TestPerformance.highVolumeTrackLocation" />
         <item itemvalue="Gradle.TestPerformance.highVolumeGetRewards" />
         <item itemvalue="Gradle.TestRewardsService" />
-        <item itemvalue="Gradle.Tests in 'TourGuide.test'" />
         <item itemvalue="Gradle.TestTourGuideService" />
-        <item itemvalue="Gradle.TestRewardsService.nearAllAttractions" />
       </list>
     </recent_temporary>
   </component>
@@ -259,7 +244,8 @@
       <updated>1678357745654</updated>
       <workItem from="1678357747974" duration="26602000" />
       <workItem from="1678975709979" duration="65773000" />
-      <workItem from="1680169412843" duration="14571000" />
+      <workItem from="1680169412843" duration="31650000" />
+      <workItem from="1680896171442" duration="512000" />
     </task>
     <servers />
   </component>
@@ -275,5 +261,9 @@
         <PinnedItemInfo parentTag="tourGuide.user.User" memberName="phoneNumber" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

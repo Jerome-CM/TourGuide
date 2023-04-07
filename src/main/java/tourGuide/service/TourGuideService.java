@@ -1,20 +1,12 @@
 package tourGuide.service;
 
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
 import gpsUtil.GpsUtil;
 import gpsUtil.location.Attraction;
 import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import rewardCentral.RewardCentral;
 import tourGuide.dto.NearbyAttractionsDTO;
 import tourGuide.dto.UserLocationListDTO;
@@ -25,10 +17,16 @@ import tourGuide.user.UserReward;
 import tripPricer.Provider;
 import tripPricer.TripPricer;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 @Service
 public class TourGuideService {
 	private Logger logger = LoggerFactory.getLogger(TourGuideService.class);
-
 	private final RewardCentral rewardCentral;
 	private final GpsUtil gpsUtil;
 	private final RewardsService rewardsService;

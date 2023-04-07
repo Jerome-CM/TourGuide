@@ -4,7 +4,6 @@ import com.jsoniter.output.JsonStream;
 import gpsUtil.location.Location;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class UserLocationListDTO {

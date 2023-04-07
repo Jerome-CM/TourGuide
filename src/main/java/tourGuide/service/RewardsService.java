@@ -1,19 +1,16 @@
 package tourGuide.service;
 
-import java.sql.SQLOutput;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-
 import gpsUtil.GpsUtil;
 import gpsUtil.location.Attraction;
 import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import rewardCentral.RewardCentral;
 import tourGuide.user.User;
 import tourGuide.user.UserReward;
+
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
 @Slf4j
